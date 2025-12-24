@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Dashboard</h4>
+
+<div class="row mb-4">
+  <div class="col-md-3"><div class="card p-3">Total Stock<br><b>{{ total_stock }}</b></div></div>
+  <div class="col-md-3"><div class="card p-3">Today Sales Qty<br><b>{{ today_sales_qty }}</b></div></div>
+  <div class="col-md-3"><div class="card p-3">New Customers Today<br><b>{{ new_customers_today }}</b></div></div>
+  <div class="col-md-3"><div class="card p-3">Today Profit<br><b>₹{{ today_profit }}</b></div></div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-6"><div class="card p-3">Returns Today<br><b>{{ total_returns_today }}</b></div></div>
+  <div class="col-md-6"><div class="card p-3">Monthly Returns<br><b>{{ monthly_returns }}</b></div></div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <canvas id="stockChart"></canvas>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('stockChart');
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: [{% for b in stock_by_brand %}'{{ b[0] or "Unknown" }}',{% endfor %}],
+        datasets: [{
+            data: [{% for b in stock_by_brand %}{{ b[1] }},{% endfor %}]
+        }]
+    }
+});
+</script>
+{% if low_stock_items %}
+<div class="alert alert-danger">
+<b>Low Stock Alert!</b>
+<ul>
+{% for item in low_stock_items %}
+<li>{{ item.part_name }} — Qty: {{ item.quantity }}</li>
+{% endfor %}
+</ul>
+</div>
+{% endif %}
+
+{% endblock %}

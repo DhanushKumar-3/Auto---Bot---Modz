@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Today Sales</h4>
+
+<table class="table table-bordered">
+<tr>
+  <th>Bill No</th>
+  <th>Customer</th>
+  <th>Qty</th>
+  <th>Profit</th>
+  <th>Time</th>
+  <th>Invoice</th>
+</tr>
+
+{% for bill in bills %}
+<tr>
+  <td>{{ bill.bill_no }}</td>
+  <td>{{ bill.customer_id }}</td>
+  <td>{{ bill.items|sum(attribute='quantity') }}</td>
+  <td>₹{{ bill.total_profit }}</td>
+  <td>{{ bill.created_at.strftime('%H:%M') }}</td>
+  <td>
+    <a href="{{ url_for('billing.view_bill', id=bill.id) }}" class="btn btn-sm btn-info">View</a>
+  </td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

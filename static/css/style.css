@@ -1,0 +1,379 @@
+/* ===============================
+   GLOBAL THEME (LIGHT MODE DEFAULT)
+================================ */
+:root {
+    --bg-main: #f5f7fb;
+    --bg-card: #ffffff;
+    --primary: #4f46e5;
+    --danger: #ef4444;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+}
+
+body {
+    background: var(--bg-main);
+    font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont;
+    color: var(--text-dark);
+}
+
+/* ===============================
+   SIDEBAR
+================================ */
+.sidebar {
+    background: linear-gradient(180deg, #1f2937, #111827);
+    width: 240px;
+    min-height: 100vh;
+    box-shadow: 2px 0 15px rgba(0,0,0,0.08);
+}
+
+.sidebar h4 {
+    color: #fff;
+    font-weight: 600;
+}
+
+.sidebar a {
+    color: #d1d5db;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    transition: all 0.25s ease;
+}
+
+.sidebar a:hover {
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    border-left: 4px solid var(--primary);
+}
+
+.sidebar .logout {
+    color: #f87171;
+}
+
+/* ===============================
+   CARDS (Dashboard)
+================================ */
+.card {
+    background: var(--bg-card);
+    border-radius: 14px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    font-weight: 500;
+}
+
+.card b {
+    font-size: 26px;
+    display: block;
+    margin-top: 6px;
+}
+
+/* ===============================
+   TABLES
+================================ */
+.table {
+    background: var(--bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table th {
+    background: #f1f5f9;
+    border: none;
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.table td {
+    border-top: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+/* ===============================
+   FORMS
+================================ */
+.form-control {
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    font-size: 14px;
+}
+
+.form-control:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79,70,229,0.15);
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+.btn {
+    border-radius: 10px;
+    font-weight: 500;
+    padding: 8px 14px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    border: none;
+}
+
+.btn-success {
+    background: var(--success);
+    border: none;
+}
+
+.btn-danger {
+    background: var(--danger);
+    border: none;
+}
+
+.btn-warning {
+    background: var(--warning);
+    border: none;
+}
+
+/* ===============================
+   POS BILLING PAGE
+================================ */
+#productList .list-group-item {
+    border-radius: 12px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#productList .list-group-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.add-btn {
+    border-radius: 50px;
+    font-size: 13px;
+}
+
+/* ===============================
+   BILL CART
+================================ */
+#cartTable {
+    background: var(--bg-card);
+    border-radius: 12px;
+}
+
+#cartTable th {
+    background: #f8fafc;
+}
+
+#totalAmount {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+#totalProfit {
+    font-size: 18px;
+    color: var(--success);
+}
+
+/* ===============================
+   ALERTS
+================================ */
+.alert-danger {
+    background: #fee2e2;
+    border: none;
+    border-radius: 12px;
+    color: #991b1b;
+}
+
+/* ===============================
+   LOW STOCK HIGHLIGHT
+================================ */
+td.bg-danger {
+    background: linear-gradient(135deg, #fee2e2, #fecaca) !important;
+    color: #7f1d1d !important;
+    font-weight: 600;
+}
+
+/* ===============================
+   🌈 GRADIENT KPI CARDS
+================================ */
+.dashboard-kpi .card:nth-child(1) {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: #fff;
+}
+.dashboard-kpi .card:nth-child(2) {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #fff;
+}
+.dashboard-kpi .card:nth-child(3) {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: #fff;
+}
+.dashboard-kpi .card:nth-child(4) {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: #fff;
+}
+
+/* ===============================
+   ✨ SUBTLE ANIMATIONS
+================================ */
+.card,
+.btn,
+.list-group-item,
+.table tr {
+    transition: all 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+}
+
+.btn:hover {
+    transform: scale(1.03);
+}
+
+/* ===============================
+   🧾 PRINT FRIENDLY INVOICE
+================================ */
+@media print {
+    body {
+        background: #fff !important;
+        color: #000 !important;
+        font-size: 12px;
+    }
+
+    .sidebar,
+    .btn,
+    .alert {
+        display: none !important;
+    }
+
+    .card,
+    .table {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+
+    table th {
+        background: #eee !important;
+        color: #000 !important;
+    }
+}
+
+/* ===============================
+   🌗 MANUAL DARK MODE TOGGLE (WORKING)
+================================ */
+
+/* Toggle UI */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #e5e7eb;
+}
+
+.theme-toggle input {
+    display: none;
+}
+
+.theme-toggle .slider {
+    width: 42px;
+    height: 22px;
+    background: #9ca3af;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.theme-toggle .slider::before {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: 2px;
+    left: 2px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+/* Toggle checked */
+body:has(#themeToggle:checked) .theme-toggle .slider {
+    background: #6366f1;
+}
+
+body:has(#themeToggle:checked) .theme-toggle .slider::before {
+    transform: translateX(20px);
+}
+
+/* ===============================
+   🌙 DARK MODE STYLES
+================================ */
+body:has(#themeToggle:checked) {
+    background: #0f172a;
+    color: #e5e7eb;
+}
+
+body:has(#themeToggle:checked) .sidebar {
+    background: linear-gradient(180deg, #020617, #020617);
+}
+
+body:has(#themeToggle:checked) .card,
+body:has(#themeToggle:checked) .table,
+body:has(#themeToggle:checked) .list-group-item,
+body:has(#themeToggle:checked) .form-control {
+    background: #020617 !important;
+    color: #e5e7eb !important;
+    border-color: #1e293b !important;
+}
+
+body:has(#themeToggle:checked) .table th {
+    background: #020617 !important;
+    color: #94a3b8 !important;
+}
+
+body:has(#themeToggle:checked) .btn-primary {
+    background: #6366f1;
+}
+
+body:has(#themeToggle:checked) .alert-danger {
+    background: #3f1d1d;
+    color: #fecaca;
+}
+
+/* ===============================
+   SCROLLBAR
+================================ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c7d2fe;
+    border-radius: 20px;
+}
+/* ===============================
+   SIDEBAR FOOTER
+================================ */
+.sidebar-footer {
+    text-align: center;
+    padding: 14px 10px;
+    font-size: 12px;
+    color: #9ca3af;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Dark mode footer */
+body:has(#themeToggle:checked) .sidebar-footer {
+    color: #94a3b8;
+    border-top: 1px solid #1e293b;
+}

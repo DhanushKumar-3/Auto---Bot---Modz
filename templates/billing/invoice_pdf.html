@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body { font-family: Arial; font-size: 14px; }
+h2 { text-align: center; margin-bottom: 5px; }
+.shop { text-align: center; font-size: 12px; }
+table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+th, td { border: 1px solid #333; padding: 6px; text-align: center; }
+.total { text-align: right; margin-top: 10px; }
+.footer { text-align: center; font-size: 11px; margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<h2>{{ shop.SHOP_NAME }}</h2>
+<div class="shop">
+GSTIN: {{ shop.GST_NUMBER }}<br>
+Auto Spare Parts & Accessories
+</div>
+
+<hr>
+
+<p>
+<b>Invoice No:</b> {{ bill.bill_no }}<br>
+<b>Date:</b> {{ bill.created_at.strftime('%d-%m-%Y %H:%M') }}<br>
+<b>Customer:</b> {{ customer.name }} ({{ customer.mobile }})
+</p>
+
+<table>
+<tr>
+<th>Item</th>
+<th>Qty</th>
+<th>Rate</th>
+<th>Total</th>
+</tr>
+
+{% for item in bill.items %}
+<tr>
+<td>{{ item.stock_id }}</td>
+<td>{{ item.quantity }}</td>
+<td>₹{{ item.selling_price }}</td>
+<td>₹{{ item.quantity * item.selling_price }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<div class="total">
+<p>Sub Total: ₹{{ bill.total_amount }}</p>
+<p>CGST ({{ shop.CGST_PERCENT }}%): ₹{{ bill.cgst_amount }}</p>
+<p>SGST ({{ shop.SGST_PERCENT }}%): ₹{{ bill.sgst_amount }}</p>
+<h3>Grand Total: ₹{{ bill.grand_total }}</h3>
+</div>
+
+<div class="footer">
+© {{ shop.SHOP_NAME }} – All Rights Reserved
+</div>
+
+</body>
+</html>

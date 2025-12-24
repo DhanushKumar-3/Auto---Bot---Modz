@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>{{ 'Edit' if stock else 'Add' }} Stock</h4>
+
+<form method="POST">
+<input class="form-control mb-2" name="part_name" placeholder="Part Name" value="{{ stock.part_name if stock }}">
+{% if not stock %}
+<input class="form-control mb-2" name="part_number" placeholder="Part Number" required>
+{% endif %}
+<input class="form-control mb-2" name="brand" placeholder="Brand" value="{{ stock.brand if stock }}">
+<input class="form-control mb-2" name="bike_model" placeholder="Bike Model" value="{{ stock.bike_model if stock }}">
+<input class="form-control mb-2" name="purchase_price" placeholder="Purchase Price" value="{{ stock.purchase_price if stock }}">
+<input class="form-control mb-2" name="selling_price" placeholder="Selling Price" value="{{ stock.selling_price if stock }}">
+<input class="form-control mb-2" name="quantity" placeholder="Quantity" value="{{ stock.quantity if stock }}">
+<input class="form-control mb-2" name="min_quantity" placeholder="Minimum Quantity" value="{{ stock.min_quantity if stock }}">
+<button class="btn btn-success">Save</button>
+</form>
+{% endblock %}

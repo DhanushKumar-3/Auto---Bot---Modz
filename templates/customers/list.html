@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Customers</h4>
+
+<form class="mb-2">
+<input name="q" class="form-control" placeholder="Search by name or mobile">
+</form>
+
+<table class="table table-bordered">
+<tr><th>Name</th><th>Mobile</th><th>Actions</th></tr>
+{% for c in customers %}
+<tr>
+<td>{{ c.name }}</td>
+<td>{{ c.mobile }}</td>
+<td>
+<a href="{{ url_for('customers.edit_customer', id=c.id) }}" class="btn btn-sm btn-warning">Edit</a>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

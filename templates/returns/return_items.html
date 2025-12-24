@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Return Items — {{ bill.bill_no }}</h4>
+
+<form method="POST">
+<table class="table table-bordered">
+<tr>
+  <th>Product</th>
+  <th>Sold Qty</th>
+  <th>Return Qty</th>
+</tr>
+
+{% for bill_item, stock in items %}
+<tr>
+  <td>
+    <b>{{ stock.part_name }}</b><br>
+    <small>PN: {{ stock.part_number }}</small>
+  </td>
+  <td>{{ bill_item.quantity }}</td>
+  <td>
+    <input type="number"
+           min="0"
+           max="{{ bill_item.quantity }}"
+           name="return_{{ bill_item.id }}"
+           class="form-control"
+           value="0">
+  </td>
+</tr>
+{% endfor %}
+</table>
+
+<button class="btn btn-danger">
+  Confirm Return
+</button>
+</form>
+
+{% endblock %}

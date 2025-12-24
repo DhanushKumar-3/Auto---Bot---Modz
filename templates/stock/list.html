@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Stock</h4>
+<a href="{{ url_for('stock.add_edit_stock') }}" class="btn btn-primary mb-2">Add Stock</a>
+
+<table class="table table-bordered">
+<tr>
+<th>Part</th><th>Qty</th><th>Min</th><th>Price</th><th>Actions</th>
+</tr>
+{% for s in stocks %}
+<tr>
+<td>{{ s.part_name }}</td>
+<td class="{% if s.quantity <= s.min_quantity %}text-danger{% endif %}">
+{{ s.quantity }}
+</td>
+<td>{{ s.min_quantity }}</td>
+<td>₹{{ s.selling_price }}</td>
+<td>
+<a href="{{ url_for('stock.add_edit_stock', id=s.id) }}" class="btn btn-sm btn-warning">Edit</a>
+<a href="{{ url_for('stock.delete_stock', id=s.id) }}" class="btn btn-sm btn-danger">Delete</a>
+<td class="{% if s.quantity <= s.min_quantity %}bg-danger text-white{% endif %}">
+{{ s.quantity }}
+</td>
+</td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

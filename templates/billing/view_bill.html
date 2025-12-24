@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<h4>Invoice</h4>
+
+<p><b>Bill No:</b> {{ bill.bill_no }}</p>
+<p><b>Customer:</b> {{ customer.name }} ({{ customer.mobile }})</p>
+
+<table class="table table-bordered">
+<tr>
+<th>Item</th><th>Qty</th><th>Price</th><th>Total</th>
+</tr>
+{% for item in bill.items %}
+<tr>
+<td>{{ item.stock_id }}</td>
+<td>{{ item.quantity }}</td>
+<td>₹{{ item.selling_price }}</td>
+<td>₹{{ item.selling_price * item.quantity }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<h5>Total: ₹{{ bill.total_amount }}</h5>
+<p>CGST (9%): ₹{{ bill.cgst_amount }}</p>
+<p>SGST (9%): ₹{{ bill.sgst_amount }}</p>
+<h4>Grand Total: ₹{{ bill.grand_total }}</h4>
+<h6>Profit: ₹{{ bill.total_profit }}</h6>
+<hr>
+
+
+<p class="text-center text-muted mt-3">
+© Auto Bot Modz – All Rights Reserved
+</p>
+
+<a href="{{ url_for('billing.invoice_pdf', id=bill.id) }}"
+   class="btn btn-danger mt-2" target="_blank">
+   Print PDF
+</a>
+
+{% endblock %}
